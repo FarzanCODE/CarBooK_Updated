@@ -25,30 +25,33 @@ const Navbar = () => {
   };
 
   return (
-    <Motion.nav 
+    <Motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
       className="absolute top-6 left-0 w-full z-50 pointer-events-none px-4"
     >
       <div className="max-w-5xl mx-auto px-6 py-3 flex items-center justify-between pointer-events-auto bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.2)] rounded-full">
-        
         <div className="flex-1 flex justify-start">
-        <Link to="/" className="flex items-center gap-2">
-          <Motion.div whileHover={{ rotate: 15 }}>
-            <Car className="text-primary" size={28} />
-          </Motion.div>
-          <span className="text-white text-xl font-bold">
-            Car<span className="text-primary">Book</span>
-          </span>
-        </Link>
+          <Link to="/" className="flex items-center gap-2">
+            <Motion.div whileHover={{ rotate: 15 }}>
+              <Car className="text-primary" size={28} />
+            </Motion.div>
+            <span className="text-white text-xl font-bold">
+              Car<span className="text-primary">Book</span>
+            </span>
+          </Link>
         </div>
 
         <div className="hidden md:flex flex-shrink-0 items-center justify-center gap-8">
           {["Home", "Cars"].map((item) => (
             <Link
               key={item}
-              to={item === "Home" ? "/" : `/${item.toLowerCase().replace(" ", "-")}`}
+              to={
+                item === "Home"
+                  ? "/"
+                  : `/${item.toLowerCase().replace(" ", "-")}`
+              }
               className="text-gray-300 hover:text-primary transition-all font-medium relative group"
             >
               {item}

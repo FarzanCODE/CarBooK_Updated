@@ -308,7 +308,8 @@ const Home = () => {
             Ready to Hit the Road?
           </h2>
           <p className="text-red-100 text-lg mb-8">
-            Browse the fleet, choose your dates, and complete a verified reservation flow.
+            Browse the fleet, choose your dates, and complete a verified
+            reservation flow.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
@@ -341,7 +342,11 @@ const Home = () => {
               <div className="flex items-center gap-4 mb-6">
                 <div className="w-20 h-20 bg-primary/20 border-2 border-primary rounded-full overflow-hidden flex items-center justify-center text-2xl">
                   {homeSettings?.founder?.image ? (
-                    <img src={homeSettings.founder.image} alt="founder" className="w-full h-full object-cover" />
+                    <img
+                      src={homeSettings.founder.image}
+                      alt="founder"
+                      className="w-full h-full object-cover"
+                    />
                   ) : (
                     "👨‍💼"
                   )}
@@ -350,11 +355,14 @@ const Home = () => {
                   <div className="text-white text-xl font-bold">
                     {homeSettings?.founder?.name || "Md Farzan Farooquee"}
                   </div>
-                  <div className="text-primary">{homeSettings?.founder?.role || "Developer, CarBook"}</div>
+                  <div className="text-primary">
+                    {homeSettings?.founder?.role || "Developer, CarBook"}
+                  </div>
                 </div>
               </div>
               <p className="text-gray-400 mb-6">
-                {homeSettings?.founder?.bio || "Passionate about making car rentals accessible, affordable and hassle-free for everyone across India."}
+                {homeSettings?.founder?.bio ||
+                  "Passionate about making car rentals accessible, affordable and hassle-free for everyone across India."}
               </p>
               <div className="flex flex-col gap-3">
                 <a
@@ -371,13 +379,18 @@ const Home = () => {
               <h3 className="text-xl font-bold text-white mb-6">
                 Send us a Message
               </h3>
-              <form onSubmit={handleContactSubmit} className="flex flex-col gap-4">
+              <form
+                onSubmit={handleContactSubmit}
+                className="flex flex-col gap-4"
+              >
                 <input
                   type="text"
                   placeholder="Your Name"
                   required
                   value={contactForm.name}
-                  onChange={(e) => setContactForm({...contactForm, name: e.target.value})}
+                  onChange={(e) =>
+                    setContactForm({ ...contactForm, name: e.target.value })
+                  }
                   className="bg-card text-white px-4 py-3 rounded-xl border border-gray-700 focus:border-primary transition-colors"
                 />
                 <input
@@ -385,7 +398,9 @@ const Home = () => {
                   placeholder="Your Email"
                   required
                   value={contactForm.email}
-                  onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
+                  onChange={(e) =>
+                    setContactForm({ ...contactForm, email: e.target.value })
+                  }
                   className="bg-card text-white px-4 py-3 rounded-xl border border-gray-700 focus:border-primary transition-colors"
                 />
                 <textarea
@@ -393,7 +408,9 @@ const Home = () => {
                   placeholder="Your Message"
                   required
                   value={contactForm.message}
-                  onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
+                  onChange={(e) =>
+                    setContactForm({ ...contactForm, message: e.target.value })
+                  }
                   className="bg-card text-white px-4 py-3 rounded-xl border border-gray-700 focus:border-primary transition-colors resize-none"
                 />
                 <button

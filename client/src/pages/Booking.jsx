@@ -113,7 +113,10 @@ const Booking = () => {
       return;
     }
 
-    if (!bookingData.startDate || (bookingData.bookingType !== "package" && !bookingData.endDate)) {
+    if (
+      !bookingData.startDate ||
+      (bookingData.bookingType !== "package" && !bookingData.endDate)
+    ) {
       toast.error("Please select the required booking dates");
       return;
     }
@@ -131,10 +134,16 @@ const Booking = () => {
         carId: carId,
         bookingType: bookingData.bookingType,
         startDate: new Date(bookingData.startDate).toISOString(),
-        endDate: bookingData.bookingType === "package" ? undefined : new Date(bookingData.endDate).toISOString(),
+        endDate:
+          bookingData.bookingType === "package"
+            ? undefined
+            : new Date(bookingData.endDate).toISOString(),
         pickupLocation: bookingData.pickupLocation,
         dropLocation: bookingData.dropLocation,
-        packageId: bookingData.bookingType === "package" ? bookingData.selectedPackage?._id : undefined,
+        packageId:
+          bookingData.bookingType === "package"
+            ? bookingData.selectedPackage?._id
+            : undefined,
       });
 
       pendingBookingId = data.booking._id;
@@ -165,7 +174,9 @@ const Booking = () => {
               navigate("/my-bookings");
             }
           } catch (error) {
-            toast.error(error.response?.data?.message || "Payment verification failed");
+            toast.error(
+              error.response?.data?.message || "Payment verification failed",
+            );
           } finally {
             setPaying(false);
           }
@@ -174,7 +185,9 @@ const Booking = () => {
         modal: {
           ondismiss: async () => {
             try {
-              await axiosInstance.put(`/bookings/${data.booking._id}/cancel`, { cancellationReason: "Payment checkout closed" });
+              await axiosInstance.put(`/bookings/${data.booking._id}/cancel`, {
+                cancellationReason: "Payment checkout closed",
+              });
             } catch {
               toast.error("Payment cancellation could not be recorded");
             }
@@ -199,12 +212,16 @@ const Booking = () => {
     } catch (error) {
       if (pendingBookingId) {
         try {
-          await axiosInstance.put(`/bookings/${pendingBookingId}/cancel`, { cancellationReason: "Checkout could not start" });
+          await axiosInstance.put(`/bookings/${pendingBookingId}/cancel`, {
+            cancellationReason: "Checkout could not start",
+          });
         } catch {
           toast.error("Pending booking cleanup failed");
         }
       }
-      toast.error(error.response?.data?.message || error.message || "Booking failed");
+      toast.error(
+        error.response?.data?.message || error.message || "Booking failed",
+      );
       setPaying(false);
     }
   };
@@ -286,7 +303,9 @@ const Booking = () => {
                   >
                     <div className="font-bold">{item.label}</div>
                     {item.price && (
-                      <div className="text-sm mt-1">₹{item.price?.toLocaleString("en-IN")}</div>
+                      <div className="text-sm mt-1">
+                        ₹{item.price?.toLocaleString("en-IN")}
+                      </div>
                     )}
                   </button>
                 ))}
@@ -493,7 +512,9 @@ const Booking = () => {
               <div className="flex justify-between items-center">
                 <span className="text-white font-bold">Total Amount</span>
                 <span className="text-primary font-bold text-2xl">
-                  {calculatedPrice > 0 ? `₹${calculatedPrice?.toLocaleString("en-IN")}` : "—"}
+                  {calculatedPrice > 0
+                    ? `₹${calculatedPrice?.toLocaleString("en-IN")}`
+                    : "—"}
                 </span>
               </div>
             </div>

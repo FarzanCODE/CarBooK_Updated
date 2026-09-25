@@ -293,7 +293,9 @@ const CarDetail = () => {
                           {pkg.durationDays} days
                         </div>
                       </div>
-                      <div className="text-primary font-bold">₹{pkg.price?.toLocaleString("en-IN")}</div>
+                      <div className="text-primary font-bold">
+                        ₹{pkg.price?.toLocaleString("en-IN")}
+                      </div>
                     </div>
                   ))}
                 </div>
