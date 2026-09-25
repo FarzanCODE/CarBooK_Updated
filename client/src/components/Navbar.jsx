@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion as Motion, AnimatePresence } from "framer-motion";
 import {
   Menu,
   X,
@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <motion.nav 
+    <Motion.nav 
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
@@ -35,9 +35,9 @@ const Navbar = () => {
         
         <div className="flex-1 flex justify-start">
         <Link to="/" className="flex items-center gap-2">
-          <motion.div whileHover={{ rotate: 15 }}>
+          <Motion.div whileHover={{ rotate: 15 }}>
             <Car className="text-primary" size={28} />
-          </motion.div>
+          </Motion.div>
           <span className="text-white text-xl font-bold">
             Car<span className="text-primary">Book</span>
           </span>
@@ -129,7 +129,7 @@ const Navbar = () => {
 
       <AnimatePresence>
         {menuOpen && (
-          <motion.div 
+          <Motion.div
             initial={{ opacity: 0, y: -20, height: 0 }}
             animate={{ opacity: 1, y: 0, height: "auto" }}
             exit={{ opacity: 0, y: -20, height: 0 }}
@@ -204,10 +204,10 @@ const Navbar = () => {
                 </Link>
               </div>
             )}
-          </motion.div>
+          </Motion.div>
         )}
       </AnimatePresence>
-    </motion.nav>
+    </Motion.nav>
   );
 };
 

@@ -57,14 +57,15 @@ const Home = () => {
   });
   const [contactLoading, setContactLoading] = useState(false);
   const [homeSettings, setHomeSettings] = useState(null);
-  const [settingsLoading, setSettingsLoading] = useState(true);
+  const [, setSettingsLoading] = useState(true);
 
   useEffect(() => {
     const fetchSettings = async () => {
       try {
         const { data } = await axiosInstance.get("/home-settings");
         setHomeSettings(data.settings);
-      } catch (error) {
+      } catch {
+        setHomeSettings(null);
       } finally {
         setSettingsLoading(false);
       }

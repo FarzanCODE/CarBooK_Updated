@@ -51,7 +51,7 @@ const Booking = () => {
     try {
       const { data } = await axiosInstance.get(`/cars/${carId}`);
       setCar(data.car);
-    } catch (error) {
+    } catch {
       toast.error("Car not found");
       navigate("/cars");
     } finally {
@@ -175,7 +175,9 @@ const Booking = () => {
           ondismiss: async () => {
             try {
               await axiosInstance.put(`/bookings/${data.booking._id}/cancel`, { cancellationReason: "Payment checkout closed" });
-            } catch {}
+            } catch {
+              toast.error("Payment cancellation could not be recorded");
+            }
             toast.error("Payment cancelled");
             setPaying(false);
           },
@@ -198,7 +200,9 @@ const Booking = () => {
       if (pendingBookingId) {
         try {
           await axiosInstance.put(`/bookings/${pendingBookingId}/cancel`, { cancellationReason: "Checkout could not start" });
-        } catch {}
+        } catch {
+          toast.error("Pending booking cleanup failed");
+        }
       }
       toast.error(error.response?.data?.message || error.message || "Booking failed");
       setPaying(false);

@@ -66,7 +66,7 @@ const MyBookings = () => {
     try {
       const { data } = await axiosInstance.get("/bookings/my-bookings");
       setBookings(data.bookings);
-    } catch (error) {
+    } catch {
       toast.error("Failed to fetch bookings");
     } finally {
       setLoading(false);

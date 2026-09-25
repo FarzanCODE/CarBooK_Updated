@@ -41,7 +41,7 @@ const CarDetail = () => {
     try {
       const { data } = await axiosInstance.get(`/cars/${id}`);
       setCar(data.car);
-    } catch (error) {
+    } catch {
       toast.error("Car not found");
       navigate("/cars");
     } finally {

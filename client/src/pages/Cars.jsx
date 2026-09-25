@@ -95,7 +95,10 @@ const Cars = () => {
       setCars(data.cars);
       setTotal(data.total);
       setPages(data.pages);
-    } catch (error) {
+    } catch {
+      setCars([]);
+      setTotal(0);
+      setPages(1);
     } finally {
       setLoading(false);
     }
