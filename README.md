@@ -158,14 +158,3 @@ npm run build
 ```
 
 The backend unit tests cover money conversion, timing-safe comparisons, regex escaping, strict booking input, password policy and server-side pricing/package duration behavior. GitHub Actions installs both applications, lints them, runs the server tests and builds the client on pushes and pull requests.
-
-## Interview explanation
-
-A useful way to present the project is around four engineering decisions:
-
-1. Availability is derived from time intervals, not a single boolean on a car.
-2. Price is authoritative only on the server, including package bookings.
-3. Payment verification binds user, booking, order, payment, amount and reservation state before confirmation.
-4. Concurrent booking transitions are serialized per car with an expiring database lock and unique lock token.
-
-Those decisions address the main failure modes of a real booking platform while keeping the codebase small enough to explain completely.
